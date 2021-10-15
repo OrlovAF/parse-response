@@ -51,7 +51,7 @@ describe('Parser', () => {
     })
 
     it('Should parse correctly Type 3 - Error', async () => {
-        const response = await parser('{"code":409,"message":"Conflict","response":{"error":{"code":409,"message":"Email [exampleemail@gmail.com] already exists"}},"env":null}`')
+        const response = await parser('{"code":409,"message":"Conflict","response":{"error":{"code":409,"message":"Email [exampleemail@gmail.com] already exists"}},"env":null}')
 
         expect(typeof response === 'object').toBeTruthy();
         expect(response.status).toBe('ERROR');
@@ -99,7 +99,7 @@ describe('Parser', () => {
         expect(Array.isArray(response.errors)).toBeTruthy();
         expect(response.errors.length).toBe(2);
         expect(response.errors[0]).toBe('Username is already in use');
-        expect(response.errors[0]).toBe('This email address is already in use at our website!');
+        expect(response.errors[1]).toBe('This email address is already in use at our website!');
     })
 
     it('Should parse correctly Type 6 - Success', async () => {
